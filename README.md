@@ -4,7 +4,7 @@ Encuentra posts de LinkedIn donde alguien **pide** ayuda con lo que vos resolvé
 
 La idea: si buscás por tema (por ejemplo "IA"), LinkedIn te muestra a los que hablan del tema, o sea a tu competencia. El que tiene el problema no escribe "IA", escribe "alguien me recomienda a quien me ayude con...". Este proyecto busca esa forma de hablar.
 
-![Ejemplo de la cola diaria](docs/cola-ejemplo.png)
+![LI Prospector: no busqués "IA", buscá a quien pide ayuda](docs/hero.png)
 
 ## Qué necesitás
 

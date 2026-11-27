@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cola de LinkedIn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f3ec; --card:#fffdf8; --ink:#1d1b17; --muted:#6b665c; --line:#e4ded1;
+  --hl:#ffe45c; --ok:#1f7a4d; --okbg:#e3f3ea; --rep:#1f4f9a; --repbg:#e4ecfa; --no:#8a8378; --nobg:#efece5;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#171613; --card:#211f1b; --ink:#f1ede4; --muted:#a39d91; --line:#36332d;
+  --hl:#c9a900; --ok:#5fcf95; --okbg:#1d3328; --rep:#8db4f2; --repbg:#1e2a40; --no:#9a9387; --nobg:#2a2824;
+}}
+:root[data-theme="dark"]{
+  --bg:#171613; --card:#211f1b; --ink:#f1ede4; --muted:#a39d91; --line:#36332d;
+  --hl:#c9a900; --ok:#5fcf95; --okbg:#1d3328; --rep:#8db4f2; --repbg:#1e2a40; --no:#9a9387; --nobg:#2a2824;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,system-ui,sans-serif}
+.wrap{max-width:860px;margin:0 auto;padding:28px 16px 64px}
+h1{font-size:26px;margin:0 0 4px;font-weight:700;letter-spacing:-.01em}
+h1 mark{background:linear-gradient(transparent 55%,var(--hl) 55%);color:inherit;padding:0 2px}
+.sub{color:var(--muted);margin:0 0 20px}
+.funnel{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:12px}
+.f{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.f b{display:block;font-size:20px;font-variant-numeric:tabular-nums}
+.f span{font-size:12px;color:var(--muted)}
+.note{font-size:13px;color:var(--muted);margin:0 0 22px}
+.bar{display:flex;gap:8px;align-items:center;justify-content:space-between;margin:0 0 12px;flex-wrap:wrap}
+.prog{font-weight:600}
+.filters button{font:inherit;font-size:13px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin-bottom:12px}
+.card.done{opacity:.6}
+.top{display:flex;gap:12px;align-items:flex-start}
+.av{flex:0 0 42px;height:42px;border-radius:50%;background:var(--line);display:grid;place-items:center;font-weight:700;color:var(--muted)}
+.who{flex:1;min-width:0}
+.name{font-weight:600}
+.handle{color:var(--muted);font-size:13px;text-decoration:none}
+.handle:hover{text-decoration:underline}
+.score{flex:0 0 auto;font-weight:700;font-size:13px;border-radius:8px;padding:3px 8px;background:var(--hl);color:#1d1b17}
+.why{margin:10px 0 4px}
+.meta{font-size:13px;color:var(--muted);margin:0 0 10px}
+.dm{position:relative;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 12px 12px 14px;white-space:pre-wrap}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.actions button,.actions a{font:inherit;font-size:13px;font-weight:500;border-radius:8px;padding:7px 12px;cursor:pointer;border:1px solid var(--line);background:var(--card);color:var(--ink);text-decoration:none}
+.actions .primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.st-enviado .s-enviado{background:var(--okbg);color:var(--ok);border-color:var(--ok)}
+.st-respondio .s-respondio{background:var(--repbg);color:var(--rep);border-color:var(--rep)}
+.st-noaplica .s-noaplica{background:var(--nobg);color:var(--no);border-color:var(--no)}
+h2{font-size:16px;margin:28px 0 8px}
+.wait{background:var(--card);border:1px dashed var(--line);border-radius:12px;padding:12px 14px;font-size:14px;color:var(--muted)}
+.wait li{margin:2px 0}
+.rules{font-size:13px;color:var(--muted);border-top:1px solid var(--line);margin-top:28px;padding-top:14px}
+@media (max-width:640px){.funnel{grid-template-columns:repeat(2,1fr)} h1{font-size:22px}}
+.post{font-size:14px;color:var(--muted);background:var(--bg);border-left:3px solid var(--line);padding:8px 12px;margin:8px 0 10px;border-radius:0 8px 8px 0}
+.post summary{cursor:pointer;color:var(--ink);font-weight:500}
+.pide{font-weight:600;margin:10px 0 2px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Cola del <mark>26 nov</mark> · 3 posts</h1>
+  <p class="sub">Abrí el post, leé el hilo, ajustá el comentario y publicalo vos desde LinkedIn.</p>
+
+  <div class="funnel"><div class="f"><b>173</b><span>posts bajados</span></div><div class="f"><b>150</b><span>con frase de pedido</span></div><div class="f"><b>3</b><span>puntaje 5 o más</span></div><div class="f"><b>3</b><span>pasan (1,7%)</span></div><div class="f"><b>$0,12</b><span>costo por post útil</span></div></div>
+  <p class="note">Búsquedas: 12. Gasto de la corrida: $0.35. </p>
+
+  <div class="bar">
+    <div class="prog" id="prog">0 de 3 comentados</div>
+    <div class="filters" role="group" aria-label="Filtro">
+      <button data-f="todos" aria-pressed="true">Todos</button>
+      <button data-f="pendiente" aria-pressed="false">Pendientes</button>
+      <button data-f="respondio" aria-pressed="false">Respondieron</button>
+    </div>
+  </div>
+
+  <div id="list"></div>
+
+  <h2>Pasaron pero no entran hoy (0)</h2>
+  <div class="wait"><ul><li>Nada afuera.</li></ul></div>
+
+  <p class="rules">Reglas del comentario: responde lo que pidió con algo que pueda usar hoy, sin link, sin precio y sin "te escribo por DM". Si te responde o te da like, ahí sí mandás la invitación a conectar con una nota corta. Cada comentario distinto y escrito como vos: un comentario que suena a IA se nota y quema tu nombre.</p>
+</div>
+
+<script>
+const P = [{"id":"1","url":"https://www.linkedin.com/","fecha":"2026-11-26","hace":"2h","autor":"Lucía Méndez (ejemplo)","tipo":"profile","cargo":"Gerente de Operaciones | Distribuidora de alimentos","perfil":"","comentarios":14,"reacciones":22,"busqueda":"\"me pueden recomendar\"","texto":"Red, ¿me pueden recomendar a alguien que nos ayude a dejar de hacer las cotizaciones en Excel? Somos 12 personas y cada vendedor tiene su propia plantilla.","s":9,"pide":"Dejar de cotizar en Excel con 12 vendedores","why":"Gerente de operaciones, decide la compra. 14 comentarios: el hilo está vivo.","com":"Lucía, antes de elegir herramienta juntá las plantillas de los 12 y marcá qué campos se repiten en todas. Casi siempre son menos de 10, y con eso armás una sola cotización que se llena sola desde la lista de precios. Lo que más cuesta no es el sistema, es ponerse de acuerdo en esa lista."},{"id":"2","url":"https://www.linkedin.com/","fecha":"2026-11-25","hace":"1d","autor":"Andrés Solano (ejemplo)","tipo":"profile","cargo":"Dueño | Clínica veterinaria","perfil":"","comentarios":6,"reacciones":9,"busqueda":"\"alguien conoce\"","texto":"¿Alguien conoce un sistema para recordar las vacunas a los clientes por WhatsApp? Hoy lo hace la recepcionista a mano.","s":8,"pide":"Recordatorios de vacunas por WhatsApp","why":"Dueño de clínica, proceso que se repite todos los días.","com":"Andrés, si ya tenés las fechas de vacuna en algún lado (aunque sea una hoja), el recordatorio es lo fácil. Lo que conviene definir primero es cuántos días antes se manda y qué pasa si el cliente responde, porque ahí es donde la recepcionista sigue haciendo el trabajo."},{"id":"3","url":"https://www.linkedin.com/","fecha":"2026-11-24","hace":"2d","autor":"Paula Rojas (ejemplo)","tipo":"profile","cargo":"Directora de RR. HH. | Retail","perfil":"","comentarios":3,"reacciones":5,"busqueda":"\"recomendaciones de\"","texto":"Busco recomendaciones de capacitación en IA para un equipo de 30 personas que ya usa Microsoft 365.","s":7,"pide":"Capacitación en IA para un equipo en Microsoft 365","why":"Directora de RR. HH., contrata la capacitación. Pocos comentarios todavía.","com":"Paula, una pregunta para cada proveedor: ¿con qué sale funcionando mi equipo el último día? Si ya tienen Microsoft 365, la capacitación debería partir de lo que ya pagan y de sus propios procesos, no de ejemplos genéricos."}];
+
+const KEY="cola-li-demo";
+let st={}; try{st=JSON.parse(localStorage.getItem(KEY)||"{}")}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}};
+let filtro="todos";
+const ini=n=>n.replace(/[^A-Za-zÁÉÍÓÚÑáéíóúñ ]/g,"").trim().split(/\s+/).slice(0,2).map(w=>w[0]||"").join("").toUpperCase();
+
+function render(){
+  const list=document.getElementById("list"); list.innerHTML="";
+  P.forEach(p=>{
+    const s=st[p.id]||"";
+    if(filtro==="pendiente"&&s) return;
+    if(filtro==="respondio"&&s!=="respondio") return;
+    const c=document.createElement("article");
+    c.className="card"+(s?" st-"+s:"")+(s==="noaplica"?" done":"");
+    c.innerHTML=`<div class="top"><div class="av"></div><div class="who"><div class="name"></div><a class="handle perfil" target="_blank" rel="noopener"></a></div><div class="score">${p.s}/10</div></div><p class="pide"></p><p class="why"></p><p class="meta"></p><details class="post"><summary>Ver el post</summary><p class="txt"></p></details><div class="dm" contenteditable="true" spellcheck="true"></div><div class="actions"><button class="primary cp">Copiar comentario</button><a class="abrir" target="_blank" rel="noopener">Abrir post</a><button class="s-enviado" data-s="enviado">Comenté</button><button class="s-respondio" data-s="respondio">Respondió</button><button class="s-noaplica" data-s="noaplica">No aplica</button></div>`;
+    c.querySelector(".av").textContent=ini(p.autor);
+    c.querySelector(".name").textContent=p.autor;
+    const pf=c.querySelector(".perfil"); pf.textContent=p.cargo||"Ver perfil"; if(p.perfil) pf.href=p.perfil;
+    c.querySelector(".pide").textContent="Pide: "+p.pide;
+    c.querySelector(".why").textContent=p.why;
+    c.querySelector(".meta").textContent=`Hace ${p.hace} · ${p.comentarios} comentarios · ${p.reacciones} reacciones`;
+    c.querySelector(".txt").textContent=p.texto;
+    c.querySelector(".abrir").href=p.url;
+    c.querySelector(".dm").textContent=p.com;
+    c.querySelector(".cp").onclick=e=>{const t=c.querySelector(".dm").innerText;navigator.clipboard&&navigator.clipboard.writeText(t);e.target.textContent="Copiado";setTimeout(()=>e.target.textContent="Copiar comentario",1200)};
+    c.querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>{st[p.id]=st[p.id]===b.dataset.s?"":b.dataset.s;save();render()});
+    list.appendChild(c);
+  });
+  const env=P.filter(p=>st[p.id]==="enviado"||st[p.id]==="respondio").length;
+  const rep=P.filter(p=>st[p.id]==="respondio").length;
+  document.getElementById("prog").textContent=`${env} de ${P.length} comentados · ${rep} respondieron`;
+}
+document.querySelectorAll(".filters button").forEach(b=>b.onclick=()=>{filtro=b.dataset.f;document.querySelectorAll(".filters button").forEach(x=>x.setAttribute("aria-pressed",x===b));render()});
+render();
+</script>
+</body>
+</html>

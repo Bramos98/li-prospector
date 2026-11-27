@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>LI Prospector</title>
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+/* Imagen principal del repo. Render: ver docs/hero/render.sh. ?f=li da el formato vertical para LinkedIn. */
+:root{
+  --paper:#FAF7F2; --ink:#111111; --muted:#5f5b55; --accent:#FF4D00;
+  --hl:#EAF205; --ga:#FF4D00; --gb:#E11D8F; --gc:#7C3AED;
+}
+*{box-sizing:border-box;margin:0}
+html,body{width:1600px;height:1000px;overflow:hidden}
+body{
+  background-color:var(--paper);
+  background-image:linear-gradient(rgba(17,17,17,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(17,17,17,.05) 1px,transparent 1px);
+  background-size:28px 28px;
+  color:var(--ink);font-family:'Satoshi',system-ui,sans-serif;-webkit-font-smoothing:antialiased;position:relative;
+}
+body::after{content:'';position:absolute;inset:0;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+.hl{position:relative;isolation:isolate;display:inline-block;padding:0 .1em}
+.hl::before{content:'';position:absolute;z-index:-1;inset:12% -3% 2% -4%;background:var(--hl);border-radius:3px;transform:rotate(-1.4deg) skewX(-6deg)}
+.hand{font-family:'Caveat',cursive;font-weight:700}
+
+.stage{position:absolute;inset:0;display:grid;grid-template-columns:640px 1fr;gap:40px;padding:84px 0 0 96px}
+.copy{display:flex;flex-direction:column;gap:30px;padding-top:24px}
+.kicker{display:flex;align-items:center;gap:12px;font:600 15px/1 ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.kicker i{width:34px;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--ga),var(--gb),var(--gc))}
+h1{font-weight:900;font-size:76px;line-height:1.02;letter-spacing:-.035em}
+h1 s{text-decoration:none;position:relative;color:#9d978d}
+h1 s::after{content:'';position:absolute;left:-4%;right:-4%;top:52%;height:7px;background:var(--accent);border-radius:6px;transform:rotate(-4deg)}
+.sub{font-size:23px;line-height:1.5;color:var(--muted);max-width:30ch}
+.sub b{color:var(--ink);font-weight:700}
+
+.stats{display:flex;gap:0;margin-top:6px;border:1.5px solid var(--ink);border-radius:14px;background:#fff;width:max-content;box-shadow:5px 5px 0 var(--ink)}
+.stat{padding:16px 26px;border-right:1.5px solid var(--ink)}
+.stat:last-child{border-right:0}
+.stat b{display:block;font-size:34px;font-weight:900;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.stat span{font-size:14px;color:var(--muted)}
+.stat.gana b{color:var(--accent)}
+
+.cmd{display:inline-flex;align-items:center;gap:14px;background:var(--ink);color:#f4f1ea;border-radius:12px;padding:14px 20px;width:max-content;font:500 19px/1 ui-monospace,SFMono-Regular,Menlo,monospace}
+.cmd em{font-style:normal;color:var(--hl)}
+.cmd small{color:#8d887f;font-size:15px}
+
+/* ventana */
+.shot{position:relative;margin-top:6px}
+.win{position:absolute;left:30px;top:0;width:900px;height:1040px;border-radius:16px;background:#fff;overflow:hidden;
+  border:1.5px solid var(--ink);box-shadow:0 2px 6px rgba(17,17,17,.08),0 30px 70px rgba(17,17,17,.18);transform:rotate(1.6deg);transform-origin:top left}
+.bar{height:46px;display:flex;align-items:center;gap:8px;padding:0 18px;border-bottom:1.5px solid var(--ink);background:#f3f0ea}
+.bar i{width:12px;height:12px;border-radius:50%;border:1.5px solid var(--ink)}
+.bar i:nth-child(1){background:#FF5F57}.bar i:nth-child(2){background:#FEBC2E}.bar i:nth-child(3){background:#28C840}
+.url{margin-left:18px;flex:1;max-width:420px;height:26px;border-radius:7px;background:#fff;border:1px solid #d9d4ca;font:13px/26px ui-monospace,Menlo,monospace;color:#6d685f;padding:0 12px}
+iframe{border:0;width:1120px;height:1240px;transform:scale(.8);transform-origin:top left;display:block}
+
+.tape{position:absolute;width:150px;height:38px;background:rgba(234,242,5,.72);transform:rotate(-8deg);z-index:3;box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.t1{left:-10px;top:-14px}
+.t2{left:830px;top:10px;transform:rotate(9deg)}
+
+.note{position:absolute;z-index:4;color:var(--ink);font-size:36px;line-height:1.05}
+.n1{left:-235px;top:560px;width:220px;transform:rotate(-5deg);text-align:right}
+.n1 svg{position:absolute;right:-118px;top:30px}
+.n2{left:640px;top:-58px;transform:rotate(3deg);font-size:31px}
+.n2 b{color:var(--accent);font-weight:700}
+
+.foot{position:absolute;left:96px;bottom:44px;font-size:16px;color:var(--muted);display:flex;gap:18px;align-items:center}
+.foot b{color:var(--ink)}
+.dot{width:4px;height:4px;border-radius:50%;background:#b5afa4}
+
+/* ---------- formato LinkedIn 1080x1350 ---------- */
+body.li,html.li{width:1080px;height:1350px}
+.li .stage{grid-template-columns:1fr;grid-template-rows:auto auto;align-content:start;gap:0;padding:72px 72px 0}
+.li h1{font-size:74px}
+.li .copy{gap:24px;padding-top:0}
+.li .sub{max-width:36ch;font-size:23px}
+.li .cmd{display:none}
+.li .shot{margin-top:56px}
+.li .win{left:24px;width:880px;height:560px}
+.li .n1,.li .n2{display:none}
+.li .t1{left:-6px;top:-16px}
+.li .t2{left:800px;top:8px}
+.li .foot{left:72px;bottom:38px;font-size:17px}
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="copy">
+    <div class="kicker"><i></i>LI Prospector · open source</div>
+    <h1>No busqués <s>“IA”</s>.<br>Buscá a quien <span class="hl">pide ayuda</span>.</h1>
+    <p class="sub">Encuentra posts de LinkedIn donde alguien pregunta <b>“¿me pueden recomendar…?”</b> por lo que vos resolvés, y te deja el comentario listo para escribir a mano.</p>
+    <div class="stats">
+      <div class="stat"><b>173</b><span>posts revisados</span></div>
+      <div class="stat gana"><b>4</b><span>pedidos reales</span></div>
+      <div class="stat"><b>$0,35</b><span>la corrida</span></div>
+    </div>
+    <div class="cmd"><small>claude</small> <em>/prospectar</em></div>
+  </div>
+
+  <div class="shot">
+    <div class="tape t1"></div><div class="tape t2"></div>
+    <div class="note hand n2">el comentario ya viene <b>escrito</b></div>
+    <div class="note hand n1">ordenados por quién decide y cuánta gente lee el hilo
+      <svg width="120" height="70" viewBox="0 0 120 70" fill="none" stroke="#111" stroke-width="3" stroke-linecap="round"><path d="M4 12 C40 0, 80 10, 108 52"/><path d="M92 50 L109 54 L112 36"/></svg>
+    </div>
+    <div class="win">
+      <div class="bar"><i></i><i></i><i></i><div class="url">colas/cola-2026-11-26.html</div></div>
+      <iframe src="cola-demo.html" scrolling="no"></iframe>
+    </div>
+  </div>
+</div>
+<div class="foot"><b>github.com/Bramos98/li-prospector</b><span class="dot"></span>Apify + Claude Code<span class="dot"></span>MIT</div>
+<script>
+if(new URLSearchParams(location.search).get('f')==='li'){document.documentElement.classList.add('li');document.body.classList.add('li')}
+</script>
+</body>
+</html>
