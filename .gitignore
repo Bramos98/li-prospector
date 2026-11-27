@@ -1,0 +1,7 @@
+node_modules/
+.env
+# Datos de la gente que aparece en las búsquedas y tus criterios: no se suben
+data/
+colas/
+docs/mis-criterios.md
+.DS_Store

@@ -1,0 +1,11 @@
+{
+  "name": "li-prospector",
+  "version": "0.1.0",
+  "description": "Encuentra posts de LinkedIn donde alguien pide ayuda con lo que vos resolvés y arma una cola diaria de comentarios para escribir a mano",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "recolectar": "node --env-file-if-exists=.env src/recolectar.js",
+    "cola": "node src/cola.js"
+  }
+}

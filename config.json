@@ -1,0 +1,24 @@
+{
+  "busquedas": [
+    "\"me pueden recomendar\"",
+    "\"alguien me recomienda\"",
+    "\"me recomiendan\"",
+    "\"qué me recomiendan\"",
+    "\"alguien conoce\"",
+    "\"alguien sabe\"",
+    "\"alguien ha usado\"",
+    "\"alguien ha implementado\"",
+    "\"recomendaciones de\"",
+    "\"busco socio\"",
+    "\"estoy buscando una empresa\"",
+    "\"necesito ayuda con\""
+  ],
+  "patronesPedido": [
+    "recomiend", "recomendacion", "alguien conoce", "alguien sabe", "alguien ha", "alguien tiene",
+    "busco", "buscando", "necesito", "necesitamos", "ayuda", "sugieren", "sugerencia", "opinan", "consejo"
+  ],
+  "antiguedad": "week",
+  "postsPorBusqueda": 25,
+  "maxCaracteres": 600,
+  "colaDiaria": 12
+}
