@@ -9,7 +9,7 @@ La idea: si buscás por tema (por ejemplo "IA"), LinkedIn te muestra a los que h
 ## Qué necesitás
 
 - [Claude Code](https://claude.com/claude-code): es el que califica los posts y escribe los comentarios.
-- [Node.js](https://nodejs.org) 20.6 o más nuevo.
+- [Node.js](https://nodejs.org) 22.9 o más nuevo.
 - Una cuenta gratis de [Apify](https://apify.com). El plan gratis trae $5 al mes, y una corrida cuesta entre $0,30 y $0,60.
 
 ## Cómo se instala
