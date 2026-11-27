@@ -7,7 +7,7 @@ import path from "node:path";
 const ROOT = path.resolve(import.meta.dirname, "..");
 const DATA = path.join(ROOT, "data");
 const cfg = JSON.parse(fs.readFileSync(path.join(ROOT, "config.json"), "utf8"));
-const fecha = process.argv[2] || new Date().toISOString().slice(0, 10);
+const fecha = process.argv[2] || new Date().toLocaleDateString("sv-SE"); // fecha local, no UTC
 const dir = path.join(DATA, "corridas", fecha);
 
 const leer = (f, def) => (fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, "utf8")) : def);

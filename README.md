@@ -50,7 +50,7 @@ La búsqueda usa el actor [`harvestapi/linkedin-post-search`](https://apify.com/
 
 ## Qué podés cambiar
 
-- **Frases, antigüedad de los posts y tamaño de la cola:** `config.json`.
+- **Frases, antigüedad de los posts y tamaño de la cola:** `config.json`. `patronesDescarte` saca solo el ruido que se repite (la plantilla de #OpenToWork, vacantes).
 - **Qué pedidos sirven y cómo se escribe el comentario:** `docs/mis-criterios.md`.
 
 ## Reglas

@@ -14,8 +14,30 @@
     "\"necesito ayuda con\""
   ],
   "patronesPedido": [
-    "recomiend", "recomendacion", "alguien conoce", "alguien sabe", "alguien ha", "alguien tiene",
-    "busco", "buscando", "necesito", "necesitamos", "ayuda", "sugieren", "sugerencia", "opinan", "consejo"
+    "recomiend",
+    "recomendacion",
+    "alguien conoce",
+    "alguien sabe",
+    "alguien ha",
+    "alguien tiene",
+    "busco",
+    "buscando",
+    "necesito",
+    "necesitamos",
+    "ayuda",
+    "sugieren",
+    "sugerencia",
+    "opinan",
+    "consejo"
+  ],
+  "patronesDescarte": [
+    "#opentowork",
+    "buscando un nuevo puesto",
+    "busco trabajo",
+    "busco empleo",
+    "busqueda laboral",
+    "oportunidad laboral",
+    "estamos contratando"
   ],
   "antiguedad": "week",
   "postsPorBusqueda": 25,
