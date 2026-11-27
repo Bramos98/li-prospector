@@ -4,12 +4,12 @@ Encuentra posts de LinkedIn donde alguien **pide** ayuda con lo que vos resolvé
 
 La idea: si buscás por tema (por ejemplo "IA"), LinkedIn te muestra a los que hablan del tema, o sea a tu competencia. El que tiene el problema no escribe "IA", escribe "alguien me recomienda a quien me ayude con...". Este proyecto busca esa forma de hablar.
 
-![Ejemplo de la cola diaria](docs/cola-ejemplo.png)
+![LI Prospector: no busqués "IA", buscá a quien pide ayuda](docs/hero.png)
 
 ## Qué necesitás
 
 - [Claude Code](https://claude.com/claude-code): es el que califica los posts y escribe los comentarios.
-- [Node.js](https://nodejs.org) 20.6 o más nuevo.
+- [Node.js](https://nodejs.org) 22.9 o más nuevo.
 - Una cuenta gratis de [Apify](https://apify.com). El plan gratis trae $5 al mes, y una corrida cuesta entre $0,30 y $0,60.
 
 ## Cómo se instala
