@@ -51,10 +51,11 @@ if (run.status !== "SUCCEEDED") { console.error(`La corrida terminó en ${run.st
 const posts = await api(`datasets/${run.defaultDatasetId}/items?clean=true`);
 const gasto = run.usageTotalUsd ?? posts.length * PRECIO;
 
-// 2. Descarte automatico: repetidos, vistos en corridas anteriores, sin texto y sin frase de pedido
+// 2. Descarte automatico: repetidos, vistos en corridas anteriores, sin texto, sin frase de pedido y ruido (busqueda de empleo)
 const vistos = new Set(leer("posts-vistos.json", []));
 const patrones = cfg.patronesPedido.map(norm);
-const descartes = { repetido: 0, visto: 0, vacio: 0, sinPedido: 0 };
+const ruido = (cfg.patronesDescarte || []).map(norm);
+const descartes = { repetido: 0, visto: 0, vacio: 0, sinPedido: 0, ruido: 0 };
 const ids = new Set();
 const candidatos = [];
 for (const p of posts) {
@@ -64,6 +65,7 @@ for (const p of posts) {
   const texto = (p.content || "").trim();
   if (!texto) { descartes.vacio++; continue; }
   if (!patrones.some((x) => norm(texto).includes(x))) { descartes.sinPedido++; continue; }
+  if (ruido.some((x) => norm(texto).includes(x))) { descartes.ruido++; continue; }
   const a = p.author || {};
   candidatos.push({
     id: p.id, url: p.linkedinUrl, fecha: p.postedAt?.date?.slice(0, 10) || "", hace: p.postedAt?.postedAgoShort || "",
@@ -74,7 +76,7 @@ for (const p of posts) {
 }
 
 // 3. Guardar la corrida y actualizar los posts vistos
-const fecha = new Date().toISOString().slice(0, 10);
+const fecha = new Date().toLocaleDateString("sv-SE"); // fecha local, no UTC
 const dir = path.join(DATA, "corridas", fecha);
 fs.mkdirSync(dir, { recursive: true });
 fs.writeFileSync(path.join(dir, "candidatos.json"), JSON.stringify(candidatos, null, 2));
